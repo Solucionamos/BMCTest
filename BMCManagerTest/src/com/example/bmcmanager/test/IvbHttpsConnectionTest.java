@@ -87,7 +87,5 @@ public class IvbHttpsConnectionTest extends AndroidTestCase {
 		assertTrue(voltages.get(0) instanceof Sensor);
 		assertEquals(voltages.get(0).getUnits(), "V");
 	}
-	
-	// successfully get power status
-	
+
 }

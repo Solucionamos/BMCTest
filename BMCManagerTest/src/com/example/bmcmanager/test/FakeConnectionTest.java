@@ -9,7 +9,6 @@ import org.apache.http.auth.AuthenticationException;
 import android.test.AndroidTestCase;
 
 import com.solucionamos.bmcconnection.FakeConnection;
-import com.solucionamos.bmcconnection.IvbHttpsConnection;
 import com.solucionamos.bmcconnection.Sensor;
 
 public class FakeConnectionTest extends AndroidTestCase {
@@ -41,8 +40,7 @@ public class FakeConnectionTest extends AndroidTestCase {
 	// throw Exception if host IP is invalid
 	public void testInvalidHostIp() throws Exception {
 		Exception ex = null;
-		FakeConnection conn2 = new FakeConnection("255.255.255.255",
-				"", "");
+		FakeConnection conn2 = new FakeConnection("255.255.255.255", "", "");
 
 		try {
 			conn2.connect();
@@ -89,7 +87,9 @@ public class FakeConnectionTest extends AndroidTestCase {
 		assertTrue(voltages.get(0) instanceof Sensor);
 		assertEquals(voltages.get(0).getUnits(), "V");
 	}
-	
-	// successfully get power status
-	
+
+	// successfully get power state
+	public void testGetPwState() throws Exception {
+		assertEquals(conn.getPwState(), FakeConnection.POWER_ON);
+	}
 }
