@@ -10,15 +10,15 @@ import android.test.AndroidTestCase;
 import com.solucionamos.bmcconnection.IvbHttpsConnection;
 import com.solucionamos.bmcconnection.Sensor;
 
-public class IvbHttpsConnectionTest extends AndroidTestCase {
+public class DummyHttpConnectionTest extends AndroidTestCase {
 
 	// BMC IP address
-	private static final String BMC_IP = "10.35.101.51";
+	private static final String BMC_IP = "10.0.3.2:8080";
 	private static IvbHttpsConnection conn;
 
 	// create a new connection to BMC
 	public void setUp() {
-		conn = new IvbHttpsConnection("https", BMC_IP, "lenovo", "len0vO");
+		conn = new IvbHttpsConnection("http", BMC_IP, "lucionamos", "6lucio9");
 		try {
 			conn.connect();
 		} catch (Exception e) {
@@ -55,8 +55,8 @@ public class IvbHttpsConnectionTest extends AndroidTestCase {
 	// throw Exception if username/password is invalid
 	public void testInvalidAuthentitcation() throws Exception {
 		Exception ex = null;
-		IvbHttpsConnection conn2 = new IvbHttpsConnection("https", BMC_IP,
-				"nologin", "");
+		IvbHttpsConnection conn2 = new IvbHttpsConnection("http", BMC_IP,
+				"nologin", "nopass");
 
 		try {
 			conn2.connect();
