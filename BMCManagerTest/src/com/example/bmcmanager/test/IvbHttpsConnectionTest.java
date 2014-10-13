@@ -7,6 +7,8 @@ import java.util.List;
 import org.apache.http.auth.AuthenticationException;
 
 import android.test.AndroidTestCase;
+
+import com.solucionamos.bmcconnection.FakeConnection;
 import com.solucionamos.bmcconnection.IvbHttpsConnection;
 import com.solucionamos.bmcconnection.Sensor;
 
@@ -88,5 +90,9 @@ public class IvbHttpsConnectionTest extends AndroidTestCase {
 		assertTrue(voltages.get(0) instanceof Sensor);
 		assertEquals(voltages.get(0).getUnits(), "V");
 	}
-
+	
+	// successfully get power state
+	public void testGetPwState() throws Exception {
+		assertEquals(conn.getPwState(), IvbHttpsConnection.POWER_ON);
+	}
 }
